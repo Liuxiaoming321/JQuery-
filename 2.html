@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+	<style type="text/css">
+		
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		
+		.main{
+			position: fixed;
+			top: 0;
+			left:0;
+			width: 100%;
+			height: 100%;
+			
+		}
+		.boerd{
+			position: absolute;
+			top:0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			
+		}
+		 
+		.boerd  .page{
+			width: 100%;
+				height: 100%;
+		}
+		.boerd  .page img{
+			width: 100%;
+			height: 100%;
+		}
+		
+		
+		.eter{
+			
+			position: absolute;
+			top:0;
+			right: 0;
+		}
+		.eter li{
+			text-align: center;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			line-height: 100px;
+			background: red;
+		}
+		.main .atived{
+			background: #ddd;
+			color: green;
+
+			
+		}
+	</style>
+<body>
+	<div class="main">
+	<ul  class="boerd">
+		<li class="page"  id="pager"><img  src="images/1.jpg"></li>
+		<li class="page"  id="pager1"><img  src="images/2.jpg"></li>
+		<li class="page"  id="pager2" ><img  src="images/3.jpg"></li>
+		<li  class="page" id="pager3"><img  src="images/4.jpg"></li>
+	</ul>
+	<ol class="eter">
+		<li class="atived">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ol>
+
+</div>
+<span class="orange">1</span>/<span>4</span>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="2.js"></script>
+<script type="text/javascript" src="function.js"></script>
+<script type="text/javascript">
+	var  mm=document.querySelector('.boerd');
+
+	var index = 0;
+	var len=$('.boerd  .page').length;
+	
+	// console.log(len);
+	 //如果不加时间控制，滚动会过度灵敏，一次翻好几屏
+    var startTime = 0,//翻屏起始时间  
+ 	 endTime = 0,
+       	 now = 0;   
+       	 //滚轮事件
+       	 //简单版
+	document.body.onmousewheel = function(event) {
+    	e = event || window.event;
+       var delta = -e.wheelDelta || e.detail;
+       //进行等比列比较
+       function  dem(e){
+       
+       }
+
+       
+       //判断滚轮向上或向下在浏览器中也要考虑兼容性，现在五大浏览器（IE、Opera、Safari、Firefox、Chrome）中Firefox 使用detail，其余四类使用wheelDelta；两者只在取值上不一致，代表含义一致，detail与wheelDelta只各取两个 值，detail只取±3，wheelDelta只取±120，其中正数表示为向上，负数表示向下。
+               startTime = new Date().getTime();  
+               // console.log( endTime);
+        if ((endTime - startTime) < -600){
+       	// console.log(111);
+       	// console.log()
+       	//下滚
+    if(delta>0){
+
+    	//封装函数进行调用
+    	demo();
+
+
+    }else{
+
+    }
+
+    //上滚
+    if(delta<0){
+    	desok();
+    	}
+    	  endTime = new Date().getTime();  
+
+        // console.log('上滚');
+    }	else{
+    	e.preventDefault();
+    }
+}
+	//封装函数直接调用
+	// demo();
+		document.onmsfullscreenchange=document.onwebkitfullscreenchange=function(){
+			if(fullscreen()){
+			console.log(111);
+	       		 	mm.classList.add('oranged')
+	       		console.log(mm.classList.add('oranged'))
+	       		
+
+	       }else{
+	       	mm.classList.add('oranged');
+	       }
+		}
+		setTimeout(function(){
+			
+			if(!fullscreen()){
+				console.log(111);
+					requestFullscreen(mm);
+					
+			}else{
+				 exitFullscreen();
+			}
+		},1000)
+	
+	       
+    	
+</script>
+</body>
+</html>
